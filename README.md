@@ -1,4 +1,4 @@
-# QA API Testing - Postman + Newman (Portfólio)
+# QA API Testing - Postman + Newman
 
 Este repositório demonstra testes de API com **Postman Collections** e execução via **Newman**. 
 O foco é mostrar **encadeamento (chaining)** de requests, uso de variáveis de ambiente e geração de relatórios HTML/JUnit para CI.
