@@ -1,0 +1,32 @@
+name: Postman API Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  newman:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - name: Install Newman & Allure Reporter
+        run: npm install -g newman newman-reporter-allure
+      - name: Run Postman Tests
+        run: |
+          newman run ./collections/Users.json -e ./environments/dev.json -r cli,html,allure
+      - name: Upload HTML Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: newman-html-report
+          path: newman/*.html
+      - name: Upload Allure Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-report
+          path: allure-report/
