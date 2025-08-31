@@ -1,0 +1,147 @@
+{
+  "info": {
+    "name": "User Flow - Chained Requests (Login -> Get User -> Update User)",
+    "_postman_id": "user-flow-001",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Login (store token)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\": \"eve.holt@reqres.in\", \"password\": \"cityslicka\"}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/login",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "login"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Testa status e guarda token para as próximas requests",
+              "pm.test('Login successful - status 200', function(){ pm.response.to.have.status(200); });",
+              "var json = pm.response.json();",
+              "pm.expect(json).to.have.property('token');",
+              "// Salva token no environment (utilizar Authorization Bearer nas próximas requests)",
+              "pm.environment.set('authToken', json.token);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Get User (requires token)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{authToken}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/users/2",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "users",
+            "2"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Valida resposta e extrai userId para próxima request",
+              "pm.test('Get user - status 200', function(){ pm.response.to.have.status(200); });",
+              "var body = pm.response.json();",
+              "pm.expect(body).to.have.property('data');",
+              "pm.environment.set('userId', body.data.id);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Update User (chained)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{authToken}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Tiago QA\", \"job\": \"QA Engineer\"}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/users/{{userId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "users",
+            "{{userId}}"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Pré-condição: garante que userId existe antes de executar o PUT",
+              "pm.test('userId exists', function(){ pm.expect(pm.environment.get('userId')).to.exist; });"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Valida status de sucesso (200 ou 201)",
+              "pm.test('Update user - status 200/201', function(){ pm.expect([200,201]).to.include(pm.response.code); });",
+              "// opcional: validar body retornado",
+              "var body = pm.response.json();",
+              "pm.test('Response has name', function(){ pm.expect(body).to.have.property('name'); });"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

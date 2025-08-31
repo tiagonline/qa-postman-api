@@ -1,0 +1,12 @@
+{
+  "name": "qa-api-testing",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "newman run collections/user_flow.json -e environments/dev.json --reporters cli,htmlextra,junit --reporter-htmlextra-export reports/report.html --reporter-junit-export reports/junit.xml"
+  },
+  "devDependencies": {
+    "newman": "^6.15.0",
+    "newman-reporter-htmlextra": "^1.23.1"
+  }
+}

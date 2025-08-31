@@ -1,0 +1,23 @@
+{
+  "id": "dev-env-001",
+  "name": "dev",
+  "values": [
+    {
+      "key": "baseUrl",
+      "value": "https://reqres.in",
+      "enabled": true
+    },
+    {
+      "key": "authToken",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "userId",
+      "value": "",
+      "enabled": true
+    }
+  ],
+  "_postman_variable_scope": "environment",
+  "_postman_exported_at": "2025-08-30T00:00:00Z"
+}
