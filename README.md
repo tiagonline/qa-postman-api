@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # qa-postman-api
+=======
+# QA API Testing - Postman + Newman
+>>>>>>> dd6014c9b307eeeca50f8d212353b6d6a8ad198b
 
 Projeto de automação de testes de API utilizando Postman, Newman e práticas modernas de QA.
 
