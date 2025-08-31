@@ -1,12 +1,15 @@
 {
-  "name": "qa-api-testing",
+  "name": "qa-postman-api",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "test": "newman run collections/user_flow.json -e environments/dev.json --reporters cli,htmlextra,junit --reporter-htmlextra-export reports/report.html --reporter-junit-export reports/junit.xml"
+    "test": "newman run collections/Users.json -e environments/dev.json --reporters cli,htmlextra,html --reporter-htmlextra-export reports/htmlextra.html --reporter-html-export reports/html.html",
+    "test:security": "newman run collections/Security.json -e environments/dev.json --reporters cli,html --reporter-html-export reports/security.html"
   },
   "devDependencies": {
     "newman": "^6.15.0",
-    "newman-reporter-htmlextra": "^1.23.1"
+    "newman-reporter-htmlextra": "^1.23.1",
+    "newman-reporter-html": "^1.0.6",
+    "chai": "^4.3.10"
   }
 }

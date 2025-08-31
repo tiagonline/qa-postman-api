@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# qa-postman-api
-=======
 # QA API Testing - Postman + Newman
 >>>>>>> dd6014c9b307eeeca50f8d212353b6d6a8ad198b
 
