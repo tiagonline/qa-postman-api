@@ -1,15 +1,28 @@
 {
   "name": "qa-postman-api",
   "version": "1.0.0",
+  "description": "Automação de testes de API com Postman e Newman - Práticas de mercado",
   "private": true,
   "scripts": {
-    "test": "newman run collections/Users.json -e environments/dev.json --reporters cli,htmlextra,html --reporter-htmlextra-export reports/htmlextra.html --reporter-html-export reports/html.html",
-    "test:security": "newman run collections/Security.json -e environments/dev.json --reporters cli,html --reporter-html-export reports/security.html"
+    "test": "newman run collections/user_flow.json -e environments/dev.json --reporters cli --insecure",
+    "test:security": "newman run collections/security.js -e environments/dev.json --reporters cli --insecure",
+    "test:dev": "newman run collections/user_flow.json -e environments/dev.json --reporters cli --insecure",
+    "test:all": "npm run test && npm run test:security",
+    "test:html": "newman run collections/user_flow.json -e environments/dev.json --reporters cli,json --reporter-json-export reports/results.json --insecure",
+    "clean": "rm -rf reports/* node_modules package-lock.json",
+    "lint": "eslint helpers/ tests/",
+    "lint:fix": "eslint helpers/ tests/ --fix",
+    "format": "prettier --write 'helpers/**/*.js' 'tests/**/*.js'",
+    "prepare": "husky install"
   },
   "devDependencies": {
-    "newman": "^6.15.0",
-    "newman-reporter-htmlextra": "^1.23.1",
-    "newman-reporter-html": "^1.0.6",
-    "chai": "^4.3.10"
+    "newman": "^5.3.2",
+    "chai": "^4.3.10",
+    "eslint": "^8.56.0",
+    "prettier": "^3.1.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "@commitlint/config-conventional": "^18.4.3",
+    "@commitlint/cli": "^18.4.3"
   }
 }

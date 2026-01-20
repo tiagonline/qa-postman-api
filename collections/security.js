@@ -8,7 +8,7 @@
       "name": "JWT Validation",
       "request": {
         "method": "GET",
-        "url": { "raw": "{{baseUrl}}/secure-data" }
+        "url": "{{baseUrl}}/secure-data"
       },
       "event": [
         {
@@ -29,7 +29,7 @@
       "name": "SQL Injection Attempt",
       "request": {
         "method": "GET",
-        "url": { "raw": "{{baseUrl}}/users?search=' OR 1=1--" }
+        "url": "{{baseUrl}}/users?search=' OR 1=1--"
       },
       "event": [
         {

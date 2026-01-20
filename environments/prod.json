@@ -1,0 +1,22 @@
+{
+  "id": "prod-env",
+  "name": "Production Environment",
+  "values": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.meusite.com"
+    },
+    {
+      "key": "timeout",
+      "value": 60000
+    },
+    {
+      "key": "authToken",
+      "value": "seu-prod-token-aqui"
+    },
+    {
+      "key": "userId",
+      "value": "1"
+    }
+  ]
+}

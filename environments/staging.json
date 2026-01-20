@@ -1,0 +1,22 @@
+{
+  "id": "staging-env",
+  "name": "Staging Environment",
+  "values": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.staging.meusite.com"
+    },
+    {
+      "key": "timeout",
+      "value": 30000
+    },
+    {
+      "key": "authToken",
+      "value": "seu-staging-token-aqui"
+    },
+    {
+      "key": "userId",
+      "value": "1"
+    }
+  ]
+}
