@@ -1,5 +1,10 @@
 # QA API Testing - Postman + Newman
 
+[![Tests Status](https://img.shields.io/badge/tests-5%2F5%20passing-brightgreen?style=flat-square)](https://github.com/tiagonline/qa-postman-api)
+[![Security Tests](https://img.shields.io/badge/security-2%2F2%20passing-brightgreen?style=flat-square)](https://github.com/tiagonline/qa-postman-api)
+[![Node.js](https://img.shields.io/badge/node-%3E%3D18.0.0-green?style=flat-square)](https://nodejs.org/)
+[![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
+
 Projeto de automação de testes de API com **Postman**, **Newman** e práticas modernas de QA, seguindo padrões de código limpo e arquitetura escalável.
 
 ## 🎯 Funcionalidades
