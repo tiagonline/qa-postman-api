@@ -209,14 +209,6 @@ Os relatórios são gerados em `reports/`:
 - `results.json` - Relatório estruturado
 - Console output - Feedback em tempo real
 
-## 🤝 Contribuindo
-
-Veja [CONTRIBUTING.md](./CONTRIBUTING.md) para diretrizes de contribuição.
-
-## 📜 Licença
-
-MIT
-
 ## 📧 Contato
 
 Tiago Silva - [@tiagonline](https://github.com/tiagonline)
@@ -225,9 +217,5 @@ Tiago Silva - [@tiagonline](https://github.com/tiagonline)
 ## Segurança
 
 Testes de segurança automatizados, como validação de JWT e tentativas de SQL Injection.
-
-## Colaboração
-
-Projeto organizado em workspace colaborativo para desenvolvimento em equipe.
 
 ---
